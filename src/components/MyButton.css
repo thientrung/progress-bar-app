@@ -1,0 +1,22 @@
+.my-button {
+  height: 10vmin;
+  width: 15vmin;
+  margin: 2vmin 2vmin 0 0;
+  font-size: 3vmin;
+  text-align: center;
+}
+
+.my-danger-button {
+  height: 10vmin;
+  width: 15vmin;
+  margin: 2vmin 2vmin 0 0;
+  font-size: 3vmin;
+  text-align: center;
+}
+
+.my-button:hover {
+  background-color: seagreen;
+}
+.my-danger-button:hover {
+  background-color: maroon;
+}

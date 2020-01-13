@@ -1,0 +1,9 @@
+.bar-container {
+  margin: 1vmin;
+}
+
+.progress-bar {
+  width: 90vmin;
+  height: 5vmin;
+  background-color: gainsboro;
+}

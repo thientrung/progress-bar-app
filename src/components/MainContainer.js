@@ -8,7 +8,7 @@ class MainContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: null,
+      bars: null,
       barChecked: "0"
     };
   }
@@ -27,9 +27,22 @@ class MainContainer extends React.Component {
       });
   }
 
+  _onClickButton = value => {
+    const { bars, barChecked } = this.state;
+    bars[barChecked] =
+      bars[barChecked] + value >= 0 ? bars[barChecked] + value : 0;
+    this.setState({
+      bars
+    });
+  };
+
   _renderButton = () => {
     return this.state.buttons.map((value, i) => (
-      <MyButton value={value} key={i} clickHandler={() => console.log(value)} />
+      <MyButton
+        value={value}
+        key={i}
+        clickHandler={() => this._onClickButton(value)}
+      />
     ));
   };
 
@@ -51,13 +64,13 @@ class MainContainer extends React.Component {
     const radioArray = bars.map((value, i) => {
       const id = i.toString();
       return (
-        <label className="radio" key={id}>
+        <label className='radio' key={id}>
           <input
-            type="radio"
-            name="react-tips"
+            type='radio'
+            name='react-tips'
             value={id}
             checked={id === this.state.barChecked}
-            className="form-check-input"
+            className='form-check-input'
             onChange={e => {
               return this._barCheckedHandler(e);
             }}
@@ -72,17 +85,21 @@ class MainContainer extends React.Component {
   render() {
     const { bars } = this.state;
     if (!bars) {
-      return <WindMillLoading size="large" />;
+      return (
+        <div data-testid='loading'>
+          <WindMillLoading size='large' />
+        </div>
+      );
     }
     return (
-      <div>
-        <div className="progress-bar-container">
+      <div data-testid='mainContainer'>
+        <div className='progress-bar-container'>
           {bars ? this._renderPregressBar() : null}
         </div>
-        <div className="radio-container">
+        <div className='radio-container'>
           {bars ? this._renderRadion() : null}
         </div>
-        <div className="button-array-container">
+        <div className='button-array-container'>
           {bars ? this._renderButton() : null}
         </div>
       </div>

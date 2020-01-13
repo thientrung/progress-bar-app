@@ -6,4 +6,5 @@
   width: 90vmin;
   height: 5vmin;
   background-color: gainsboro;
+  text-align: inherit;
 }

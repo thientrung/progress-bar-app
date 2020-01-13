@@ -10,7 +10,7 @@ class MyButton extends React.Component {
         className={value > 0 ? "my-button" : "my-danger-button"}
         variant={value > 0 ? "outline-success" : "outline-danger"}
         onClick={clickHandler}
-      >
+        data-testid='myButton'>
         {value}
       </Button>
     );

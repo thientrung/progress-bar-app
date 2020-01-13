@@ -3,29 +3,16 @@ import { ProgressBar } from "react-bootstrap";
 import "./MyBar.css";
 
 class MyBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      percentage: props.percentage
-    };
-  }
-
-  modifyPercentage = value => {
-    this.setState(prevState => ({
-      percentage: prevState.percentage + value
-    }));
-  };
-
   render() {
     const { percentage, limit, index } = this.props;
     return (
-      <div className="bar-container" key={index}>
+      <div className='bar-container' key={index} data-testid='myBar'>
         <ProgressBar
-          className="progress-bar"
+          className='progress-bar'
           animated
           striped
-          variant="success"
-          now={this.state.percentage}
+          variant={percentage > limit ? "danger" : "success"}
+          now={percentage <= limit ? percentage : limit}
           label={`${percentage}%`}
           min={0}
           max={limit}
